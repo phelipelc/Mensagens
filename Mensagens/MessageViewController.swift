@@ -19,14 +19,6 @@ class MessageViewController: BaseViewController {
         vc.message = message
     }
     
-    override func changeColor(_ snder: UIButton) {
-        let colorPicker = storyboard?.instantiateViewController(withIdentifier: "ColorPickerViewController") as! ColorPickerViewController
-        colorPicker.modalPresentationStyle = .overCurrentContext
-        colorPicker.reference = self
-        present(colorPicker, animated: true, completion: nil)
-    }
-    
-    
 }
 
 extension MessageViewController : UITextFieldDelegate {

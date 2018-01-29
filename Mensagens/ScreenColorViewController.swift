@@ -14,10 +14,14 @@ class ScreenColorViewController: BaseViewController {
     @IBOutlet weak var swWhiteBorder: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
+        lbMessage.text = message.text
+        lbMessage.textColor = message.textColor
+        lbMessage.backgroundColor = message.backgroundColor
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! ResultViewController
         vc.message = message
+        vc.useWhiteBorder = swWhiteBorder.isOn
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,3 +34,9 @@ class ScreenColorViewController: BaseViewController {
     }
 }
 
+extension ScreenColorViewController: ColorPickerProtocol {
+    func applyColor(color: UIColor) {
+        view.backgroundColor = color
+        message.screenColor = color
+    }
+}
